@@ -6,8 +6,10 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "pandas>=3.0.1",
+    "pygments==2.20.0",
     "pyjokes>=0.8.3",
     "rich>=14.2.0",
+    "flask==0.5",
 ]
 
 [dependency-groups]
