@@ -17,6 +17,11 @@ jobs:
   test:
     name: Build & Test
     runs-on: ubuntu-latest
+  scan:
+    name: Security Checks
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
 
     steps:
     - uses: actions/checkout@v4
@@ -59,3 +64,9 @@ jobs:
         paths: "junit.xml"
       # ensure this runs even if tests fail
       if: always()
+
+    - name: Scan for secrets
+      uses: gitleaks/gitleaks-action@v2
+      if: always()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
