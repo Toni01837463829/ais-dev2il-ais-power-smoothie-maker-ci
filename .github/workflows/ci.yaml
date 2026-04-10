@@ -17,11 +17,6 @@ jobs:
   test:
     name: Build & Test
     runs-on: ubuntu-latest
-  scan:
-    name: Security Checks
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
 
     steps:
     - uses: actions/checkout@v4
@@ -70,3 +65,10 @@ jobs:
       if: always()
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  scan:
+    name: Security Checks
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+
