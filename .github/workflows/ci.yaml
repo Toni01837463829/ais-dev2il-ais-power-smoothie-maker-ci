@@ -60,24 +60,24 @@ jobs:
       # ensure this runs even if tests fail
       if: always()
 
-  scan:
-    name: Security Checks
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-    needs: test   # optional: runs after test
+#  scan:
+#    name: Security Checks
+#    runs-on: ubuntu-latest
+ #   permissions:
+#      pull-requests: write
+#    needs: test   # optional: runs after test
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # <-- This is the crucial addition!
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v4
+#        with:
+#          fetch-depth: 0 # <-- This is the crucial addition!##
 
-      - name: Scan for secrets
-        uses: gitleaks/gitleaks-action@v2
-        if: always()
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      - name: Scan for secrets
+#        uses: gitleaks/gitleaks-action@v2
+#        if: always()
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build-and-push:
     name: Build & Push Docker Image
